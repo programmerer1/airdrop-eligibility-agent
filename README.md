@@ -2,7 +2,7 @@
     <img src="https://github.com/programmerer1/airdrop-eligibility-agent/blob/main/logo.png" width="200" alt="logo">
 </p>
 
-# Eligibility Checker Agent
+# Airdrop Eligibility Checker Agent
 This Python-based async agent is designed to swiftly check a given Ethereum Virtual Machine (EVM) address for token airdrop eligibility across multiple blockchain networks and smart contracts simultaneously.
 
 Built using the **Sentient Agent Framework**  
