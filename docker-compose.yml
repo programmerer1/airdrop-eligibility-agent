@@ -1,0 +1,17 @@
+services:
+  airdrop-eligibility-checker-agent:
+    build: .
+    container_name: airdrop_eligibility_checker_agent
+    networks:
+      - airdrop-eligibility-checker-agent-network
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    volumes:
+      - ./src:/app/src
+
+networks:
+  airdrop-eligibility-checker-agent-network:
+    name: my-airdrop-eligibility-checker-agent-network
