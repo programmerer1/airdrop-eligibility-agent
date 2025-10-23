@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/programmerer1/airdrop-eligibility-agent/blob/main/logo.png" width="200" alt="logo">
+    <img src="https://github.com/programmerer1/airdrop-eligibility-agent/blob/main/logo.png" width="300" alt="logo">
 </p>
 
 # Airdrop Eligibility Checker Agent
@@ -16,3 +16,7 @@ https://github.com/sentient-agi/Sentient-Agent-Framework
 - Asynchronous Performance
 
 - Configuration via YAML: Contract addresses, methods, and ABIs are easily managed in a centralized YAML file (contracts.yml).
+
+<p align="center">
+    <img src="https://github.com/programmerer1/airdrop-eligibility-agent/blob/main/yaml.png" alt="yaml">
+</p>
