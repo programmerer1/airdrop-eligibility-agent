@@ -93,3 +93,85 @@ docker compose -f docker-compose.yml up -d
     }
 }
 ```
+
+To test the agent's operation, you can deploy the smart contract on the Sepolia network in Remix (or another service). In this case, the addresses 0x4abAF7b00248bcF38984477be31fa2AEcA6Ba1a8 and 0x0B7a798Fbf4b6b8Ea528DeE2F411d9FA87B27Ba1 has been added as eligible for the airdrop. You can add your own address.
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Context.sol";
+
+contract MyAirdropCheckerToken is ERC20, Ownable {
+    uint256 public constant INITIAL_SUPPLY = 100000 * 10**18;
+
+    mapping(address => uint256) public eligibleAmounts;
+
+    bool private airdropProcessed = false;
+
+    constructor(address initialOwner)
+        ERC20("My Sepolia Airdrop Check Token", "MSATC")
+        Ownable(initialOwner)
+    {
+        _mint(msg.sender, INITIAL_SUPPLY);
+        
+        eligibleAmounts[0x4abAF7b00248bcF38984477be31fa2AEcA6Ba1a8] = 10000 * 10**18;
+        eligibleAmounts[0x0B7a798Fbf4b6b8Ea528DeE2F411d9FA87B27Ba1] = 10000 * 10**18;
+
+        uint256 total = eligibleAmounts[0x4abAF7b00248bcF38984477be31fa2AEcA6Ba1a8] + 
+                        eligibleAmounts[0x0B7a798Fbf4b6b8Ea528DeE2F411d9FA87B27Ba1];
+        
+        require(INITIAL_SUPPLY >= total, "Supply is less than airdrop total");
+    }
+
+    function airdropTokens() public onlyOwner {
+        require(!airdropProcessed, "Airdrop already processed");
+        
+        // Получатели
+        address[] memory recipients = new address[](2);
+        recipients[0] = 0x4abAF7b00248bcF38984477be31fa2AEcA6Ba1a8;
+        recipients[1] = 0x0B7a798Fbf4b6b8Ea528DeE2F411d9FA87B27Ba1;
+
+        uint256 totalDistributed = 0;
+
+        for (uint i = 0; i < recipients.length; i++) {
+            address recipient = recipients[i];
+            uint256 amount = eligibleAmounts[recipient];
+
+            if (amount > 0) {
+                _transfer(owner(), recipient, amount);
+                totalDistributed += amount;
+                eligibleAmounts[recipient] = 0;
+            }
+        }
+        
+        airdropProcessed = true;
+    }
+}
+```
+
+After that, we add the following to the `yaml` (**Please pay attention to the indentation**):
+```yaml
+    - name: "Sepolia Airdrop Check Token"
+      address: "Token contract address here"
+      method: "eligibleAmounts"
+      params: ["{user_address}"] 
+      network: "Sepolia"
+      chainId: 11155111
+      ticker: MSATC
+      decimals: 18
+      abi:
+        - inputs:
+            - internalType: "address"
+              name: ""
+              type: "address"
+          name: "eligibleAmounts"
+          outputs:
+            - internalType: "uint256"
+              name: ""
+              type: "uint256"
+          stateMutability: "view"
+          type: "function"
+```
