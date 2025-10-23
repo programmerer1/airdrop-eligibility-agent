@@ -36,6 +36,8 @@ class EtherscanApi:
         method = contract.get("method")
         chain_id = contract.get("chainId")
         abi = contract.get("abi")
+        decimals = int(contract.get("decimals", 18))
+        ticker = contract.get("ticker", "")
 
         # Validation
         if not abi:
@@ -101,12 +103,23 @@ class EtherscanApi:
             logging.info(f"[{name}] Returned empty or zero result — skipped.")
             return {"status": "skipped", "contract": name}
 
-        eligible = int(hex_result, 16)
+        try:
+            value_int = int(hex_result, 16)
+        except ValueError:
+            logging.warning(f"[{name}] Invalid hex value in response — skipped.")
+            return {"status": "skipped", "contract": name}
+
+        if value_int == 0:
+            logging.info(f"[{name}] Returned zero value — skipped.")
+            return {"status": "skipped", "contract": name}
+
+        value = value_int / (10 ** decimals)
 
         return {
             "status": "ok",
             "contract": name,
-            "eligible": eligible
+            "eligible": value_int > 0,
+            "amount": f"{value:.6f} {ticker}"
         }
 
     @staticmethod
