@@ -27,7 +27,7 @@ contracts:
       params: ["{user_address}"] # {user_address} will be changed to the user's address.
       network: "Linea Mainnet"
       chainId: 59144
-      ticker: LINEA
+      ticker: "LINEA"
       decimals: 18
       abi:
         - inputs:

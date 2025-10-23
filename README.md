@@ -47,7 +47,7 @@ contracts:
       params: ["{user_address}"] # {user_address} will be changed to the user's address.
       network: "Linea Mainnet"
       chainId: 59144
-      ticker: LINEA
+      ticker: "LINEA"
       decimals: 18
       abi:
         - inputs:
@@ -160,7 +160,7 @@ After that, we add the following to the `yaml` (**Please pay attention to the in
       params: ["{user_address}"] 
       network: "Sepolia"
       chainId: 11155111
-      ticker: MSATC
+      ticker: "MSATC"
       decimals: 18
       abi:
         - inputs:
