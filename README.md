@@ -179,5 +179,5 @@ After that, we add the following to the `yaml` (**Please pay attention to the in
 ## Example:
 
 <p align="center">
-    <img src="https://github.com/programmerer1/airdrop-eligibility-agent/blob/main/example1.png" alt="example">
+    <img src="https://github.com/programmerer1/airdrop-eligibility-agent/blob/main/example2.png" alt="example">
 </p>
