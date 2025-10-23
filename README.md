@@ -9,7 +9,7 @@ Built using the **Sentient Agent Framework**
 https://github.com/sentient-agi/Sentient-Agent-Framework
 
 ## Key Features
-- Multi-Chain Support: Easily configured to query eligibility on various EVM-compatible chains (e.g., Arbitrum, Linea) using Etherscan/Arbiscan/Lineascan proxy APIs.
+- Multi-Chain Support: Easily configured to query eligibility on various EVM-compatible chains (e.g., Arbitrum, Linea) using Etherscan proxy APIs.
 
 - ABI-Driven Calls
 
