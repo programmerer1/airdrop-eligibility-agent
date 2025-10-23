@@ -20,3 +20,34 @@ https://github.com/sentient-agi/Sentient-Agent-Framework
 <p align="center">
     <img src="https://github.com/programmerer1/airdrop-eligibility-agent/blob/main/yaml.png" alt="yaml">
 </p>
+
+## Installation
+Clone the repository
+```
+git clone https://github.com/programmerer1/airdrop-eligibility-agent.git
+
+cd airdrop-eligibility-agent
+
+cp .env.example .env
+
+docker compose -f docker-compose.yml up -d
+```
+
+**Example POST request to localhost:8000/assist:**
+```bash
+{
+    "session": 
+    {
+        "processor_id":"sentient-chat-client",
+        "activity_id":"01K6BEMNWZFMP3RMGJTFZBND2N",
+        "request_id": "01K6BEPKY12FMR1S19Y3SE01C6",
+        "interactions":[]
+    }, 
+    "query": 
+    {
+        "id": "01K6BEMZ2QZQ58ADNDCKBPKD51", 
+        "prompt": "Check my wallet 0x4abaf7b00248bcf38984477be31fa2aeca6ba1a8",
+        "context": ""
+    }
+}
+```
