@@ -17,9 +17,51 @@ https://github.com/sentient-agi/Sentient-Agent-Framework
 
 - Configuration via YAML: Contract addresses, methods, and ABIs are easily managed in a centralized YAML file (contracts.yml).
 
-<p align="center">
-    <img src="https://github.com/programmerer1/airdrop-eligibility-agent/blob/main/yaml.png" alt="yaml">
-</p>
+```yaml
+contracts:
+  - evm:
+    - name: "Arbitrum Airdrop"
+      address: "0x67a24ce4321ab3af51c2d0a4801c3e111d88c9d9"
+      method: "claimableTokens"
+      params: ["{user_address}"] # {user_address} will be changed to the user's address.
+      network: "Arbitrum One"
+      chainId: 42161
+      ticker: "ARB"
+      decimals: 18
+      abi:
+        - inputs:
+            - internalType: "address"
+              name: ""
+              type: "address"
+          name: "claimableTokens"
+          outputs:
+            - internalType: "uint256"
+              name: ""
+              type: "uint256"
+          stateMutability: "view"
+          type: "function"
+
+    - name: "Linea Airdrop"
+      address: "0x44b265C958b549913c3795664c94B1eB043c835C"
+      method: "calculateAllocation"
+      params: ["{user_address}"] # {user_address} will be changed to the user's address.
+      network: "Linea Mainnet"
+      chainId: 59144
+      ticker: LINEA
+      decimals: 18
+      abi:
+        - inputs:
+            - internalType: "address"
+              name: "_account"
+              type: "address"
+          name: "calculateAllocation"
+          outputs:
+            - internalType: "uint256"
+              name: "tokenAllocation"
+              type: "uint256"
+          stateMutability: "view"
+          type: "function"
+```
 
 ## Installation
 Clone the repository
