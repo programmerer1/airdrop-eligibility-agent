@@ -175,3 +175,9 @@ After that, we add the following to the `yaml` (**Please pay attention to the in
           stateMutability: "view"
           type: "function"
 ```
+
+## Example:
+
+<p align="center">
+    <img src="https://github.com/programmerer1/airdrop-eligibility-agent/blob/main/example.png" alt="example">
+</p>

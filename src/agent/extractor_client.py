@@ -2,6 +2,7 @@ import json
 import httpx
 from .config import EXTRACTOR_MODEL_API_URL, EXTRACTOR_MODEL_NAME, EXTRACTOR_MODEL_API_KEY
 from .prompts.extractor import system_prompt
+from eth_utils import is_address
 
 class Extractor:
     async def extract(self, prompt: str) -> dict:
@@ -50,4 +51,7 @@ class Extractor:
         if not address:
             return {}
 
+        if not is_address(address):
+            return {}
+            
         return address
