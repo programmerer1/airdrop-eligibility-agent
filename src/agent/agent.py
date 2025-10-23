@@ -1,6 +1,5 @@
 import json
 import logging
-import asyncio
 from typing import Any
 
 from sentient_agent_framework.interface.agent import AbstractAgent
