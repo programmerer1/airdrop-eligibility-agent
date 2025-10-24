@@ -22,7 +22,7 @@ contracts:
           type: "function"
 
     - name: "Linea Airdrop"
-      address: "0x44b265C958b549913c3795664c94B1eB043c835C"
+      address: "0x87baa1694381ae3ecae2660d97fe60404080eb64"
       method: "calculateAllocation"
       params: ["{user_address}"] # {user_address} will be changed to the user's address.
       network: "Linea Mainnet"
